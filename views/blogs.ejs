@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Blogs</title>
+</head>
+
+<body style="background-color:#C0C0C0;">
+    <div class="container">
+        <h3 style="text-align: center;font-weight:700;font-style:italic;text-decoration: underline;">Welcome to my Blogs
+        </h3>
+        <a href="/blogs/new" class="btn btn-outline-primary" style="font-size:large;">Create New Blog</a>
+
+        <% blogs.forEach(blog=>{ %>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h3 style="text-align: center;text-decoration: underline;color:blue ;">
+                                <%= blog.title %>
+                            </h3>
+                            <p class="card-text" style="font-size: x-large;">
+                                <%= blog.description %>
+                            </p>
+                            
+                            <form action="/blogs/<%= blog.id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-outline-danger" style="font-size: larger;">Delete</button>
+                            </form>
+                            <a href="/blogs/edit/<%= blog.id %>" button type="button" class="btn btn-outline-info" style="font-size: larger;">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+
+
+    </div>
+</body>
+
+</html>
